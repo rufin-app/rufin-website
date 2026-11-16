@@ -1,0 +1,197 @@
+body {
+  font-family: system-ui, sans-serif;
+}
+
+a {
+  color: #ff8c1a;
+}
+a:hover {
+  color: #ffc94a;
+}
+
+.page-header {
+  text-align: center;
+  padding: 0 1.5rem;
+}
+.page-header h1 {
+  margin: 0;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #ffc94a, #ff8c1a, #ff3d00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
+  margin-inline: auto;
+}
+.page-header p {
+  color: #a8a8a8;
+  font-size: 1.15rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+  align-items: start;
+}
+
+.card {
+  min-width: 0;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(18, 18, 18, 0.75);
+  backdrop-filter: blur(8px);
+}
+.card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+}
+.card p {
+  line-height: 1.5;
+}
+.card .button {
+  margin: 0.5rem 0;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.card-title img {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.card-featured {
+  border-color: rgba(255, 140, 26, 0.5);
+  box-shadow: 0 0 40px rgba(255, 140, 26, 0.12);
+}
+
+.note {
+  color: #a8a8a8;
+  font-size: 0.95rem;
+}
+
+code {
+  font-family: ui-monospace, "JetBrains Mono", monospace;
+  font-size: 0.9em;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-position 0.5s ease, background-color 0.25s ease, color 0.25s ease;
+}
+.button:hover, .button:focus-visible {
+  transform: translateY(-3px) scale(1.04);
+}
+.button:focus-visible {
+  outline: 2px solid #ffc94a;
+  outline-offset: 3px;
+}
+
+.button-primary {
+  color: #000000;
+  background: linear-gradient(120deg, #ffc94a, #ff8c1a, #ff3d00, #ff8c1a, #ffc94a);
+  background-size: 250% 100%;
+  background-position: 0% 50%;
+}
+.button-primary:hover, .button-primary:focus-visible {
+  color: #000000;
+  background-position: 100% 50%;
+  box-shadow: 0 8px 30px rgba(255, 140, 26, 0.45);
+}
+
+.button-secondary {
+  color: #eeeeee;
+  border: 2px solid #ff8c1a;
+  padding: calc(0.75rem - 2px) calc(1.75rem - 2px);
+}
+.button-secondary:hover, .button-secondary:focus-visible {
+  color: #ffc94a;
+  background-color: rgba(255, 140, 26, 0.12);
+  box-shadow: 0 8px 30px rgba(255, 140, 26, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+  .button:hover, .button:focus-visible {
+    transform: none;
+  }
+}
+#donate {
+  max-width: 1000px;
+  margin: 2rem auto 4rem;
+  padding: 0 1.5rem;
+}
+
+.donate-option {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+.donate-option h2 {
+  margin: 0 0 0.5rem;
+  font-size: 1.6rem;
+}
+.donate-option .card-title img {
+  width: 40px;
+  height: 40px;
+}
+.donate-option p {
+  flex: 1;
+}
+.donate-option .button {
+  align-self: flex-start;
+}
+
+#sponsors,
+#other-ways {
+  margin-top: 4rem;
+}
+#sponsors h2,
+#other-ways h2 {
+  font-size: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 0.5rem;
+}
+
+#other-ways .card {
+  display: flex;
+  flex-direction: column;
+  align-self: stretch;
+}
+#other-ways .card p {
+  flex: 1;
+}
+#other-ways .card .button {
+  align-self: flex-start;
+}
+
+#sponsors p {
+  color: #a8a8a8;
+}
+#sponsors img {
+  display: block;
+  max-width: 100%;
+  margin-top: 1rem;
+}

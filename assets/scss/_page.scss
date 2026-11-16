@@ -1,0 +1,175 @@
+// Shared building blocks for the content pages (download, donate)
+// Same palette as the background dots in style.scss
+$orange: #ff8c1a;
+$red-orange: #ff3d00;
+$yellow: #ffc94a;
+$text: #eeeeee;
+$muted: #a8a8a8;
+$card-bg: rgba(18, 18, 18, 0.75);
+$border: rgba(255, 255, 255, 0.12);
+
+body {
+	font-family: system-ui, sans-serif;
+}
+
+a {
+	color: $orange;
+
+	&:hover {
+		color: $yellow;
+	}
+}
+
+.page-header {
+	text-align: center;
+	padding: 0 1.5rem;
+
+	h1 {
+		margin: 0;
+		font-size: 3rem;
+		background: linear-gradient(135deg, $yellow, $orange, $red-orange);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		width: fit-content;
+		margin-inline: auto;
+	}
+
+	p {
+		color: $muted;
+		font-size: 1.15rem;
+	}
+}
+
+.card-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	gap: 1.25rem;
+	margin-top: 1.25rem;
+	align-items: start;
+}
+
+.card {
+	min-width: 0;
+	padding: 1.5rem;
+	border: 1px solid $border;
+	border-radius: 16px;
+	background: $card-bg;
+	backdrop-filter: blur(8px);
+
+	h3 {
+		margin: 0 0 0.5rem;
+		font-size: 1.4rem;
+	}
+
+	p {
+		line-height: 1.5;
+	}
+
+	.button {
+		margin: 0.5rem 0;
+	}
+}
+
+// Heading with a logo in front of it
+.card-title {
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+
+	img {
+		width: 32px;
+		height: 32px;
+		flex-shrink: 0;
+	}
+}
+
+// Single column of cards, used for the Linux options
+.card-list {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+}
+
+.card-featured {
+	border-color: rgba($orange, 0.5);
+	box-shadow: 0 0 40px rgba($orange, 0.12);
+}
+
+.note {
+	color: $muted;
+	font-size: 0.95rem;
+}
+
+// Inline code
+code {
+	font-family: ui-monospace, "JetBrains Mono", monospace;
+	font-size: 0.9em;
+	padding: 0.1em 0.35em;
+	border-radius: 4px;
+	background: rgba(255, 255, 255, 0.08);
+}
+
+// Buttons: same look as the ones on the home page
+.button {
+	display: inline-block;
+	padding: 0.75rem 1.75rem;
+	border-radius: 999px;
+	font-weight: 600;
+	letter-spacing: 0.03em;
+	text-decoration: none;
+	transition:
+		transform 0.25s ease,
+		box-shadow 0.25s ease,
+		background-position 0.5s ease,
+		background-color 0.25s ease,
+		color 0.25s ease;
+
+	&:hover,
+	&:focus-visible {
+		transform: translateY(-3px) scale(1.04);
+	}
+
+	&:focus-visible {
+		outline: 2px solid $yellow;
+		outline-offset: 3px;
+	}
+}
+
+.button-primary {
+	color: #000000;
+	background: linear-gradient(120deg, $yellow, $orange, $red-orange, $orange, $yellow);
+	background-size: 250% 100%;
+	background-position: 0% 50%;
+
+	&:hover,
+	&:focus-visible {
+		color: #000000;
+		background-position: 100% 50%;
+		box-shadow: 0 8px 30px rgba($orange, 0.45);
+	}
+}
+
+.button-secondary {
+	color: $text;
+	border: 2px solid $orange;
+	padding: calc(0.75rem - 2px) calc(1.75rem - 2px);
+
+	&:hover,
+	&:focus-visible {
+		color: $yellow;
+		background-color: rgba($orange, 0.12);
+		box-shadow: 0 8px 30px rgba($orange, 0.25);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.button {
+		transition: none;
+
+		&:hover,
+		&:focus-visible {
+			transform: none;
+		}
+	}
+}

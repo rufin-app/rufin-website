@@ -1,0 +1,315 @@
+body {
+  font-family: system-ui, sans-serif;
+}
+
+a {
+  color: #ff8c1a;
+}
+a:hover {
+  color: #ffc94a;
+}
+
+.page-header {
+  text-align: center;
+  padding: 0 1.5rem;
+}
+.page-header h1 {
+  margin: 0;
+  font-size: 3rem;
+  background: linear-gradient(135deg, #ffc94a, #ff8c1a, #ff3d00);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  width: fit-content;
+  margin-inline: auto;
+}
+.page-header p {
+  color: #a8a8a8;
+  font-size: 1.15rem;
+}
+
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+  margin-top: 1.25rem;
+  align-items: start;
+}
+
+.card {
+  min-width: 0;
+  padding: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(18, 18, 18, 0.75);
+  backdrop-filter: blur(8px);
+}
+.card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+}
+.card p {
+  line-height: 1.5;
+}
+.card .button {
+  margin: 0.5rem 0;
+}
+
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.card-title img {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+}
+
+.card-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.card-featured {
+  border-color: rgba(255, 140, 26, 0.5);
+  box-shadow: 0 0 40px rgba(255, 140, 26, 0.12);
+}
+
+.note {
+  color: #a8a8a8;
+  font-size: 0.95rem;
+}
+
+code {
+  font-family: ui-monospace, "JetBrains Mono", monospace;
+  font-size: 0.9em;
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background-position 0.5s ease, background-color 0.25s ease, color 0.25s ease;
+}
+.button:hover, .button:focus-visible {
+  transform: translateY(-3px) scale(1.04);
+}
+.button:focus-visible {
+  outline: 2px solid #ffc94a;
+  outline-offset: 3px;
+}
+
+.button-primary {
+  color: #000000;
+  background: linear-gradient(120deg, #ffc94a, #ff8c1a, #ff3d00, #ff8c1a, #ffc94a);
+  background-size: 250% 100%;
+  background-position: 0% 50%;
+}
+.button-primary:hover, .button-primary:focus-visible {
+  color: #000000;
+  background-position: 100% 50%;
+  box-shadow: 0 8px 30px rgba(255, 140, 26, 0.45);
+}
+
+.button-secondary {
+  color: #eeeeee;
+  border: 2px solid #ff8c1a;
+  padding: calc(0.75rem - 2px) calc(1.75rem - 2px);
+}
+.button-secondary:hover, .button-secondary:focus-visible {
+  color: #ffc94a;
+  background-color: rgba(255, 140, 26, 0.12);
+  box-shadow: 0 8px 30px rgba(255, 140, 26, 0.25);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button {
+    transition: none;
+  }
+  .button:hover, .button:focus-visible {
+    transform: none;
+  }
+}
+#about {
+  max-width: 1100px;
+  margin: 2rem auto 4rem;
+  padding: 0 1.5rem;
+}
+
+#intro {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+}
+#intro > img {
+  width: 160px;
+  flex-shrink: 0;
+  filter: drop-shadow(0 0 30px rgba(255, 140, 26, 0.35));
+}
+#intro p {
+  font-size: 1.15rem;
+  line-height: 1.6;
+}
+@media (max-width: 700px) {
+  #intro {
+    flex-direction: column;
+    text-align: center;
+  }
+  #intro > img {
+    width: 110px;
+  }
+}
+
+.about-section {
+  margin-top: 4rem;
+}
+.about-section > h2 {
+  font-size: 2rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  padding-bottom: 0.5rem;
+}
+.about-section > h3 {
+  margin-top: 2rem;
+}
+
+.table-wrap {
+  overflow-x: auto;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 16px;
+  background: rgba(18, 18, 18, 0.75);
+}
+
+#sources {
+  width: 100%;
+  border-collapse: collapse;
+}
+#sources th,
+#sources td {
+  padding: 0.85rem 1rem;
+  text-align: left;
+  vertical-align: middle;
+}
+#sources thead th {
+  color: #ff8c1a;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+}
+#sources tbody tr + tr {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+#sources tbody tr:hover {
+  background: rgba(255, 140, 26, 0.05);
+}
+#sources tbody th {
+  white-space: nowrap;
+}
+#sources img {
+  height: 20px;
+  width: auto;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}
+#sources img.invert {
+  filter: brightness(0) invert(1);
+}
+
+.features {
+  columns: 2 380px;
+  column-gap: 1.25rem;
+}
+.features .card {
+  break-inside: avoid;
+  margin-bottom: 1.25rem;
+}
+.features ul {
+  margin: 0;
+  padding-left: 1.1rem;
+}
+.features li {
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+.features li::marker {
+  color: #ff8c1a;
+}
+.features strong {
+  color: #ffc94a;
+}
+.features details {
+  margin-top: 0.35rem;
+  color: #a8a8a8;
+}
+.features details summary {
+  cursor: pointer;
+  color: #ff8c1a;
+}
+.features pre {
+  margin: 0.6rem 0 0;
+  padding: 0.8rem 1rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  background: #0b0b0b;
+  overflow-x: auto;
+}
+.features pre code {
+  padding: 0;
+  background: none;
+}
+
+#screenshots {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 1.5rem;
+}
+#screenshots figure {
+  margin: 0;
+}
+#screenshots a {
+  display: block;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+#screenshots a:hover, #screenshots a:focus-visible {
+  transform: translateY(-4px);
+  border-color: rgba(255, 140, 26, 0.6);
+  box-shadow: 0 10px 30px rgba(255, 140, 26, 0.2);
+}
+#screenshots img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  object-position: top;
+}
+#screenshots figcaption {
+  margin-top: 0.5rem;
+  text-align: center;
+  font-weight: 600;
+}
+
+.credits-image {
+  display: block;
+  max-width: 100%;
+  margin-top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #screenshots a {
+    transition: none;
+  }
+  #screenshots a:hover, #screenshots a:focus-visible {
+    transform: none;
+  }
+}

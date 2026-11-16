@@ -1,0 +1,133 @@
+@use "page" as *;
+
+// Tab bar is only useful when JavaScript can switch panels
+#platform-tabs {
+	display: none;
+	justify-content: center;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	margin: 2rem auto 0;
+	padding: 0 1rem;
+
+	.js & {
+		display: flex;
+	}
+
+	button {
+		padding: 0.6rem 1.5rem;
+		border: 2px solid $border;
+		border-radius: 999px;
+		background: transparent;
+		color: $text;
+		font: inherit;
+		font-weight: 600;
+		cursor: pointer;
+		transition:
+			border-color 0.25s ease,
+			background-color 0.25s ease,
+			color 0.25s ease;
+
+		&:hover {
+			border-color: $orange;
+		}
+
+		&:focus-visible {
+			outline: 2px solid $yellow;
+			outline-offset: 3px;
+		}
+
+		&[aria-selected="true"] {
+			border-color: $orange;
+			background-color: rgba($orange, 0.15);
+			color: $yellow;
+		}
+	}
+}
+
+#platforms {
+	max-width: 1000px;
+	margin: 2rem auto 4rem;
+	padding: 0 1.5rem;
+}
+
+.platform {
+	margin-bottom: 3rem;
+	animation: panel-in 0.35s ease both;
+
+	// With tabs active the tab bar already names the platform
+	.js & .platform-title {
+		display: none;
+	}
+}
+
+.platform-title {
+	font-size: 2rem;
+	border-bottom: 1px solid $border;
+	padding-bottom: 0.5rem;
+}
+
+.hint {
+	display: block;
+	margin: -0.5rem 0 0.75rem;
+	color: $muted;
+	font-size: 0.85rem;
+}
+
+// Code blocks
+pre {
+	position: relative;
+	margin: 0.75rem 0;
+	padding: 0.9rem 4.5rem 0.9rem 1rem;
+	border: 1px solid $border;
+	border-radius: 10px;
+	background: #0b0b0b;
+	overflow-x: auto;
+
+	code {
+		padding: 0;
+		background: none;
+		white-space: pre;
+	}
+}
+
+.copy {
+	position: absolute;
+	top: 0.5rem;
+	right: 0.5rem;
+	padding: 0.25rem 0.6rem;
+	border: 1px solid $border;
+	border-radius: 6px;
+	background: #1a1a1a;
+	color: $text;
+	font: inherit;
+	font-size: 0.8rem;
+	cursor: pointer;
+
+	&:hover,
+	&:focus-visible {
+		border-color: $orange;
+		color: $orange;
+	}
+}
+
+@keyframes panel-in {
+	from {
+		opacity: 0;
+		transform: translateY(12px);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.platform {
+		animation: none;
+	}
+
+	#platform-tabs button {
+		transition: none;
+
+		&:hover,
+		&:focus-visible {
+			transform: none;
+		}
+	}
+}

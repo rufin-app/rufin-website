@@ -1,0 +1,77 @@
+@use "navbar";
+
+$background: #000000;
+$dot-color: #ff8c1a;
+$dot-color-2: #ff3d00; // deeper red-orange
+$dot-color-3: #ffc94a; // warm yellow
+$dot-size: 500px;
+$dot-opacity: 0.35; // 0 = invisible, 1 = solid
+$dot-speed: 20s; // time for one full rotation; higher = slower
+$dot-fade-time: 2s; // how long the dots take to fade in on page load
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background-color: $background;
+    color: #eeeeee;
+    position: relative;
+    overflow-x: hidden;
+
+    // Orange gradient dots: top-left and bottom-right
+    &::before,
+    &::after {
+        content: "";
+        position: fixed;
+        width: $dot-size;
+        height: $dot-size;
+        border-radius: 50%;
+        background: linear-gradient(135deg, $dot-color-3, $dot-color, $dot-color-2);
+        filter: blur(60px);
+        opacity: $dot-opacity;
+        z-index: -1;
+        pointer-events: none;
+        animation:
+            dot-rotate $dot-speed linear infinite,
+            dot-fade-in $dot-fade-time ease-out;
+
+    }
+
+    &::before {
+        top: $dot-size * -0.3;
+        left: $dot-size * -0.3;
+    }
+
+    &::after {
+        bottom: $dot-size * -0.3;
+        right: $dot-size * -0.3;
+        // Offset so the two dots don't move in sync
+        // (the second value keeps the fade-in starting immediately)
+        animation-delay: $dot-speed * -0.5, 0s;
+    }
+}
+
+// Spins each dot in place, which rotates the gradient inside it
+@keyframes dot-rotate {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+// Fades each dot from invisible up to its normal opacity ($dot-opacity)
+@keyframes dot-fade-in {
+    from {
+        opacity: 0;
+    }
+}
+
+// Respect users who have asked their system to reduce motion
+@media (prefers-reduced-motion: reduce) {
+    body::before,
+    body::after {
+        // Keep the gentle fade-in, but stop the rotation
+        animation: dot-fade-in $dot-fade-time ease-out;
+    }
+}

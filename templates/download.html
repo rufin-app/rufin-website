@@ -1,0 +1,227 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Rufin</title>
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="stylesheet" href="/static/css/style.css" />
+		<link rel="stylesheet" href="/static/css/download.css" />
+	</head>
+	<body>
+		{{ navbar }}
+		<header class="page-header">
+			<h1>Download Rufin</h1>
+			<p>
+				Available for Linux, Windows, macOS and Android.
+				Pick your platform below.
+			</p>
+		</header>
+
+		<!-- Platform tabs. Without JavaScript every panel is shown, one after another. -->
+		<div id="platform-tabs" role="tablist" aria-label="Platform">
+			<button role="tab" id="tab-linux" aria-controls="panel-linux" data-platform="linux">Linux</button>
+			<button role="tab" id="tab-windows" aria-controls="panel-windows" data-platform="windows">Windows</button>
+			<button role="tab" id="tab-macos" aria-controls="panel-macos" data-platform="macos">macOS</button>
+			<button role="tab" id="tab-android" aria-controls="panel-android" data-platform="android">Android</button>
+			<button role="tab" id="tab-source" aria-controls="panel-source" data-platform="source">Source</button>
+		</div>
+
+		<main id="platforms">
+			<!-- ================= Linux ================= -->
+			<section class="platform" id="panel-linux" role="tabpanel" aria-labelledby="tab-linux">
+				<h2 class="platform-title">Linux</h2>
+
+				<div class="card-list">
+					<article class="card">
+						<h3 class="card-title"><img src="/static/distros/flatpak.svg" alt="" />Flatpak</h3>
+						<p>Works on any distribution and keeps Rufin up to date through Flathub.</p>
+						<a class="button button-primary" href="https://flathub.org/apps/io.github.screwys.Rufin">Get it on Flathub</a>
+						<pre><code>flatpak install flathub io.github.screwys.Rufin</code></pre>
+					</article>
+
+					<article class="card">
+						<h3 class="card-title"><img src="/static/distros/fedora.svg" alt="" />Fedora</h3>
+						<p>Available for Fedora 44 and 45 via COPR.</p>
+						<pre><code>sudo dnf copr enable screwyy/rufin
+sudo dnf install rufin</code></pre>
+					</article>
+
+					<article class="card">
+						<h3 class="card-title"><img src="/static/distros/archlinux.svg" alt="" />Arch Linux (AUR)</h3>
+						<p>Latest binary release:</p>
+						<pre><code>yay -S rufin-bin</code></pre>
+						<p>Or build from the latest source:</p>
+						<pre><code>yay -S rufin-git</code></pre>
+					</article>
+
+					<article class="card">
+						<h3 class="card-title"><img src="/static/distros/nixos.svg" alt="" />Nix</h3>
+						<p>Rufin is in nixpkgs. Run it without installing:</p>
+						<pre><code>nix run nixpkgs#rufin</code></pre>
+						<p>Or add it to your profile:</p>
+						<pre><code>nix profile install nixpkgs#rufin</code></pre>
+						<p>You can also run <code>main</code> or a specific release:</p>
+						<pre><code>nix run github:screwys/Rufin/main
+nix run github:screwys/Rufin/vX.Y.Z</code></pre>
+					</article>
+
+					<article class="card">
+						<h3 class="card-title"><img src="/static/distros/gentoo.svg" alt="" />Gentoo</h3>
+						<p>
+							Available in the
+							<a href="https://git.fumo.pet/kariga/karioverlay">karioverlay</a>
+							repository. Issues with the ebuild should go to the overlay maintainer.
+						</p>
+						<p>First, install <code>eselect-repository</code>:</p>
+						<pre><code>emerge --ask app-eselect/eselect-repository</code></pre>
+						<p>Then add and sync the overlay:</p>
+						<pre><code>sudo eselect repository add karioverlay git https://git.fumo.pet/kariga/karioverlay
+sudo emaint sync -r karioverlay</code></pre>
+						<p>Add one of these lines to <code>/etc/portage/package.accept_keywords</code>:</p>
+						<pre><code>media-sound/rufin ~amd64</code></pre>
+						<span class="hint">Latest stable version, built from source</span>
+						<pre><code>media-sound/rufin **</code></pre>
+						<span class="hint">Latest git commit</span>
+						<p>Finally, emerge the package:</p>
+						<pre><code>emerge -av media-sound/rufin</code></pre>
+					</article>
+				</div>
+			</section>
+
+			<!-- ================= Windows ================= -->
+			<section class="platform" id="panel-windows" role="tabpanel" aria-labelledby="tab-windows">
+				<h2 class="platform-title">Windows</h2>
+				<article class="card card-featured">
+					<h3>Installer</h3>
+					<p>Download the <code>.exe</code> installer from the latest GitHub release.</p>
+					<a class="button button-primary" href="https://github.com/screwys/Rufin/releases/latest">Download for Windows</a>
+					<p class="note">
+						Turn on <strong>Automatic updates</strong> in General preferences to have Rufin
+						install available updates when it starts, or click <strong>Update</strong> in
+						Version History on the latest release.
+					</p>
+				</article>
+			</section>
+
+			<!-- ================= macOS ================= -->
+			<section class="platform" id="panel-macos" role="tabpanel" aria-labelledby="tab-macos">
+				<h2 class="platform-title">macOS</h2>
+				<div class="card-grid">
+					<article class="card">
+						<h3>Homebrew</h3>
+						<p>Homebrew Cask is the primary way to install Rufin on macOS.</p>
+						<pre><code>brew install --cask screwys/tap/rufin</code></pre>
+						<p class="note">
+							Turn on <strong>Automatic updates</strong> in General preferences, or click
+							<strong>Update</strong> in Version History on the latest release.
+						</p>
+					</article>
+					<article class="card">
+						<h3>Disk image</h3>
+						<p>
+							Download the <code>.dmg</code> directly. Note that you will have to
+							update Rufin manually.
+						</p>
+						<a class="button button-secondary" href="https://github.com/screwys/Rufin/releases/latest">Download .dmg</a>
+					</article>
+				</div>
+			</section>
+
+			<!-- ================= Android ================= -->
+			<section class="platform" id="panel-android" role="tabpanel" aria-labelledby="tab-android">
+				<h2 class="platform-title">Android</h2>
+				<article class="card card-featured">
+					<h3>Obtainium</h3>
+					<p>
+						Rufin for Android is installed and kept up to date with
+						<a href="https://obtainium.imranr.dev/">Obtainium</a>.
+						Open the button below on your phone, or add the repository URL in Obtainium yourself.
+					</p>
+					<a class="button button-primary" href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22io.github.screwys.Rufin%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fscrewys%2FRufin%22%2C%22author%22%3A%22screwys%22%2C%22name%22%3A%22Rufin%22%7D">Get it on Obtainium</a>
+					<pre><code>https://github.com/screwys/Rufin</code></pre>
+					<p class="note">Requires Android 7.0 or newer.</p>
+				</article>
+			</section>
+
+			<!-- ================= Source ================= -->
+			<section class="platform" id="panel-source" role="tabpanel" aria-labelledby="tab-source">
+				<h2 class="platform-title">Build from source</h2>
+				<article class="card">
+					<p>
+						Building natively requires Rust 1.96+, CMake 3.25+, Ninja, pkg-config,
+						GTK 4.20+, libadwaita 1.9+ and GStreamer 1.26+.
+					</p>
+					<pre><code>git clone https://github.com/screwys/Rufin.git
+cd Rufin
+just build
+just debug</code></pre>
+					<p>
+						Prefer to keep dependencies off your system? Use the Linux development
+						container (Docker or Podman):
+					</p>
+					<pre><code>just container setup
+just build</code></pre>
+					<a class="button button-secondary" href="https://github.com/screwys/Rufin#building-locally">Full build instructions</a>
+				</article>
+			</section>
+		</main>
+
+		<script>
+			// Tabs: enabled only when JavaScript runs, so the page stays usable without it
+			(() => {
+				const tabs = [...document.querySelectorAll("#platform-tabs [role=tab]")];
+				const select = (platform) => {
+					for (const tab of tabs) {
+						const active = tab.dataset.platform === platform;
+						tab.setAttribute("aria-selected", active);
+						tab.tabIndex = active ? 0 : -1;
+						document.getElementById(tab.getAttribute("aria-controls")).hidden = !active;
+					}
+				};
+
+				tabs.forEach((tab, i) => {
+					tab.addEventListener("click", () => {
+						select(tab.dataset.platform);
+						history.replaceState(null, "", "#" + tab.dataset.platform);
+					});
+					tab.addEventListener("keydown", (e) => {
+						const step = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+						if (!step) return;
+						const next = tabs[(i + step + tabs.length) % tabs.length];
+						next.focus();
+						next.click();
+					});
+				});
+
+				// Start on the platform from the URL hash, otherwise guess from the user agent
+				const ua = navigator.userAgent;
+				const guess = /Android/i.test(ua) ? "android"
+					: /Windows/i.test(ua) ? "windows"
+					: /Mac OS X|Macintosh/i.test(ua) ? "macos"
+					: "linux";
+				const fromHash = location.hash.slice(1);
+				document.documentElement.classList.add("js");
+				select(tabs.some((t) => t.dataset.platform === fromHash) ? fromHash : guess);
+
+				// Copy button on every code block
+				for (const pre of document.querySelectorAll("pre")) {
+					const button = document.createElement("button");
+					button.className = "copy";
+					button.type = "button";
+					button.textContent = "Copy";
+					button.addEventListener("click", async () => {
+						try {
+							await navigator.clipboard.writeText(pre.querySelector("code").innerText);
+							button.textContent = "Copied!";
+						} catch {
+							button.textContent = "Failed";
+						}
+						setTimeout(() => (button.textContent = "Copy"), 1500);
+					});
+					pre.append(button);
+				}
+			})();
+		</script>
+	</body>
+</html>

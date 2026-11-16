@@ -1,0 +1,213 @@
+@use "page" as *;
+
+#about {
+	max-width: 1100px;
+	margin: 2rem auto 4rem;
+	padding: 0 1.5rem;
+}
+
+// Logo next to the intro text; stacks on narrow screens
+#intro {
+	display: flex;
+	align-items: center;
+	gap: 2.5rem;
+
+	> img {
+		width: 160px;
+		flex-shrink: 0;
+		filter: drop-shadow(0 0 30px rgba($orange, 0.35));
+	}
+
+	p {
+		font-size: 1.15rem;
+		line-height: 1.6;
+	}
+
+	@media (max-width: 700px) {
+		flex-direction: column;
+		text-align: center;
+
+		> img {
+			width: 110px;
+		}
+	}
+}
+
+.about-section {
+	margin-top: 4rem;
+
+	> h2 {
+		font-size: 2rem;
+		border-bottom: 1px solid $border;
+		padding-bottom: 0.5rem;
+	}
+
+	> h3 {
+		margin-top: 2rem;
+	}
+}
+
+// Wide table scrolls sideways on small screens instead of squashing
+.table-wrap {
+	overflow-x: auto;
+	border: 1px solid $border;
+	border-radius: 16px;
+	background: $card-bg;
+}
+
+#sources {
+	width: 100%;
+	border-collapse: collapse;
+
+	th,
+	td {
+		padding: 0.85rem 1rem;
+		text-align: left;
+		vertical-align: middle;
+	}
+
+	thead th {
+		color: $orange;
+		font-size: 0.9rem;
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		border-bottom: 1px solid $border;
+	}
+
+	tbody tr + tr {
+		border-top: 1px solid $border;
+	}
+
+	tbody tr:hover {
+		background: rgba($orange, 0.05);
+	}
+
+	tbody th {
+		white-space: nowrap;
+	}
+
+	img {
+		height: 20px;
+		width: auto;
+		margin-right: 0.5rem;
+		vertical-align: middle;
+	}
+
+	// Same recolor as on the home page: OpenSubsonic logo to white
+	img.invert {
+		filter: brightness(0) invert(1);
+	}
+}
+
+// Masonry-style columns: each card sits right under the previous one, so cards
+// of different heights don't leave gaps. Drops to one column on narrow screens.
+.features {
+	columns: 2 380px;
+	column-gap: 1.25rem;
+
+	.card {
+		break-inside: avoid;
+		margin-bottom: 1.25rem;
+	}
+
+	ul {
+		margin: 0;
+		padding-left: 1.1rem;
+	}
+
+	li {
+		margin-bottom: 0.6rem;
+		line-height: 1.5;
+
+		&::marker {
+			color: $orange;
+		}
+	}
+
+	strong {
+		color: $yellow;
+	}
+
+	details {
+		margin-top: 0.35rem;
+		color: $muted;
+
+		summary {
+			cursor: pointer;
+			color: $orange;
+		}
+	}
+
+	pre {
+		margin: 0.6rem 0 0;
+		padding: 0.8rem 1rem;
+		border: 1px solid $border;
+		border-radius: 10px;
+		background: #0b0b0b;
+		overflow-x: auto;
+
+		code {
+			padding: 0;
+			background: none;
+		}
+	}
+}
+
+#screenshots {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: 1.5rem;
+
+	figure {
+		margin: 0;
+	}
+
+	a {
+		display: block;
+		border: 1px solid $border;
+		border-radius: 12px;
+		overflow: hidden;
+		transition:
+			transform 0.25s ease,
+			border-color 0.25s ease,
+			box-shadow 0.25s ease;
+
+		&:hover,
+		&:focus-visible {
+			transform: translateY(-4px);
+			border-color: rgba($orange, 0.6);
+			box-shadow: 0 10px 30px rgba($orange, 0.2);
+		}
+	}
+
+	img {
+		display: block;
+		width: 100%;
+		aspect-ratio: 16 / 10;
+		object-fit: cover;
+		object-position: top;
+	}
+
+	figcaption {
+		margin-top: 0.5rem;
+		text-align: center;
+		font-weight: 600;
+	}
+}
+
+.credits-image {
+	display: block;
+	max-width: 100%;
+	margin-top: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#screenshots a {
+		transition: none;
+
+		&:hover,
+		&:focus-visible {
+			transform: none;
+		}
+	}
+}

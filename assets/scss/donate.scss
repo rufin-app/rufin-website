@@ -1,0 +1,70 @@
+@use "page" as *;
+
+#donate {
+	max-width: 1000px;
+	margin: 2rem auto 4rem;
+	padding: 0 1.5rem;
+}
+
+// The two donation platforms: bigger cards with the button at the bottom
+.donate-option {
+	display: flex;
+	flex-direction: column;
+	align-self: stretch;
+
+	h2 {
+		margin: 0 0 0.5rem;
+		font-size: 1.6rem;
+	}
+
+	.card-title img {
+		width: 40px;
+		height: 40px;
+	}
+
+	p {
+		flex: 1;
+	}
+
+	.button {
+		align-self: flex-start;
+	}
+}
+
+#sponsors,
+#other-ways {
+	margin-top: 4rem;
+
+	h2 {
+		font-size: 2rem;
+		border-bottom: 1px solid $border;
+		padding-bottom: 0.5rem;
+	}
+}
+
+// Stretch the cards to equal height and keep their buttons on one line
+#other-ways .card {
+	display: flex;
+	flex-direction: column;
+	align-self: stretch;
+
+	p {
+		flex: 1;
+	}
+
+	.button {
+		align-self: flex-start;
+	}
+}
+
+#sponsors {
+	p {
+		color: $muted;
+	}
+
+	img {
+		display: block;
+		max-width: 100%;
+		margin-top: 1rem;
+	}
+}

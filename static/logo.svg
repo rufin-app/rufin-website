@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128" height="128" viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg" transform="translate(4,4)" stroke-linecap="round" stroke-linejoin="round">
+	<defs>
+		<linearGradient id="sheen-gradient" x1="32" x2="56" y1="32" y2="56" gradientUnits="userSpaceOnUse">
+			<stop stop-color="#252525" stop-opacity="0" offset="0"/>
+			<stop stop-color="#7b7b7b" stop-opacity=".7" offset=".5"/>
+			<stop stop-color="#252525" stop-opacity="0" offset="1"/>
+		</linearGradient>
+		<linearGradient id="front-gradient">
+			<stop stop-color="#ce3b2f" offset="0"/>
+			<stop stop-color="#f76a37" offset=".038"/>
+			<stop stop-color="#e94a2f" offset=".077"/>
+			<stop stop-color="#e94a2f" offset=".923"/>
+			<stop stop-color="#f76a37" offset=".962"/>
+			<stop stop-color="#ce3b2f" offset="1"/>
+		</linearGradient>
+		<clipPath id="speaker-clip">
+			<use href="#speaker-inside"/>
+		</clipPath>
+		<clipPath id="disc-clip">
+			<use href="#platter"/>
+		</clipPath>
+		<filter id="sheen-blur">
+			<feGaussianBlur stdDeviation="0.85 0.85"/>
+		</filter>
+	</defs>
+	<rect id="front" x="8" y="12" width="104" height="100" rx="8" ry="8" fill="url(#front-gradient)"/>
+	<rect id="speaker-inside" x="20" y="96" width="80" height="12" rx="4" ry="4" fill="#251221"/>
+	<g id="speaker-grill" fill="none" stroke="#6d2545" stroke-linecap="butt" stroke-linejoin="miter" stroke-width="2">
+		<g clip-path="url(#speaker-clip)">
+			<line x1="20" x2="100" y1="100" y2="100"/>
+			<line x1="20" x2="100" y1="104" y2="104"/>
+		</g>
+		<line x1="28" x2="28" y1="96" y2="108"/>
+		<line x1="36" x2="36" y1="96" y2="108"/>
+		<line x1="44" x2="44" y1="96" y2="108"/>
+		<line x1="52" x2="52" y1="96" y2="108"/>
+		<line x1="60" x2="60" y1="96" y2="108"/>
+		<line x1="68" x2="68" y1="96" y2="108"/>
+		<line x1="76" x2="76" y1="96" y2="108"/>
+		<line x1="84" x2="84" y1="96" y2="108"/>
+		<line x1="92" x2="92" y1="96" y2="108"/>
+	</g>
+	<rect id="surface" x="8" y="8" width="104" height="84" rx="8" ry="8" fill="#fc9342"/>
+	<circle id="platter-shadow" cx="44" cy="46" r="44" fill="#111"/>
+	<circle id="platter" cx="44" cy="44" r="44" fill="#252525"/>
+	<g id="grooves" fill="none" stroke="#525252" stroke-width="4">
+		<path d="m80 44a36 36 0 0 1-36 36"/>
+		<path d="m68 44a24 24 0 0 1-24 24"/>
+		<path d="m20 44a24 24 0 0 1 24-24"/>
+		<path d="m8 44a36 36 0 0 1 36-36"/>
+	</g>
+	<path d="m63 4-19 40 40-19-1e-6 -21zm-19 40-40 19-1e-7 21 21 1e-6z" clip-path="url(#disc-clip)" fill="url(#sheen-gradient)" filter="url(#sheen-blur)"/>
+	<circle id="disc-label" cx="44" cy="44" r="16" fill="#b3553c"/>
+	<circle id="disc-label2" cx="44" cy="44" r="4" fill="#fb7137"/>
+	<line id="spindle" x1="44" x2="44" y1="36" y2="44" stroke="#fff" stroke-width="2"/>
+	<line id="cartridge" x1="64" x2="64" y1="70" y2="74" stroke="#c0bfbc" stroke-width="2"/>
+	<g id="arm-shadow" fill="#deddda">
+		<line x1="100" x2="64" y1="52" y2="69" stroke="#deddda" stroke-width="6"/>
+		<rect x="102" y="50" width="1" height="2"/>
+		<rect x="61" y="67" width="1" height="2"/>
+		<circle cx="100" cy="28" r="8"/>
+	</g>
+	<path id="tonearm" d="m100 26v24l-36 17" fill="none" stroke="#fff" stroke-width="6"/>
+	<circle id="counterweight" cx="100" cy="26" r="8" fill="#fff"/>
+	<g id="controls-shadow" fill="#deddda">
+		<circle cx="104" cy="82" r="4"/>
+		<rect x="100" y="80" width="1" height="2"/>
+		<rect x="107" y="80" width="1" height="2"/>
+		<circle cx="104" cy="70" r="4"/>
+		<rect x="107" y="68" width="1" height="2"/>
+		<rect x="100" y="68" width="1" height="2"/>
+	</g>
+	<g id="controls" fill="#fff">
+		<circle cx="104" cy="80" r="4"/>
+		<circle cx="104" cy="68" r="4"/>
+	</g>
+</svg>

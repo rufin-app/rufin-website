@@ -1,0 +1,242 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Rufin</title>
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="stylesheet" href="/static/css/style.css" />
+		<link rel="stylesheet" href="/static/css/about.css" />
+	</head>
+	<body>
+		{{ navbar }}
+		<header class="page-header">
+			<h1>About Rufin</h1>
+		</header>
+
+		<main id="about">
+			<section id="intro">
+				<img src="/static/logo.svg" alt="" />
+				<div>
+					<p>
+						Rufin is a fast, native music player for local folders, network shares and
+						music servers, on Linux, Windows, macOS and Android. It offers deep
+						customization for its appearance and behavior, a rich library browsing and
+						management experience with in-app lyrics, metadata and artwork searching
+						&amp; editing, and a careful playback engine powered by GStreamer.
+					</p>
+					<p>
+						Rufin Connect securely syncs your devices and moves playback between them;
+						Rufin can also run headless, be scripted, or be controlled from its Web UI.
+					</p>
+					<a class="button button-primary" href="/download">Download Rufin</a>
+				</div>
+			</section>
+
+			<!-- ================= Sources ================= -->
+			<section class="about-section">
+				<h2>Sources</h2>
+				<div class="table-wrap">
+					<table id="sources">
+						<thead>
+							<tr>
+								<th>Source</th>
+								<th>Favorites, ratings and playlists</th>
+								<th>Metadata editing</th>
+								<th>Also</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th scope="row">Local folders</th>
+								<td>Kept by Rufin</td>
+								<td>Written to the files</td>
+								<td>Folders are watched for changes</td>
+							</tr>
+							<tr>
+								<th scope="row">WebDAV / Nextcloud</th>
+								<td>Kept by Rufin</td>
+								<td>Written to the files</td>
+								<td>No mount needed</td>
+							</tr>
+							<tr>
+								<th scope="row">SMB / Samba</th>
+								<td>Kept by Rufin</td>
+								<td>Written to the files</td>
+								<td>No mount needed, share discovery</td>
+							</tr>
+							<tr>
+								<th scope="row"><img src="/static/services/jellyfin.svg" alt="" />Jellyfin</th>
+								<td>On the server</td>
+								<td>Over the server API</td>
+								<td>Instant Mix, live library updates</td>
+							</tr>
+							<tr>
+								<th scope="row"><img src="/static/services/emby.svg" alt="" />Emby</th>
+								<td>On the server; ratings kept by Rufin</td>
+								<td>Over the server API</td>
+								<td>Instant Mix, live library updates</td>
+							</tr>
+							<tr>
+								<th scope="row">
+									<img src="/static/services/navidrome.svg" alt="" />Navidrome /
+									<img class="invert" src="/static/services/opensubsonic.svg" alt="" />OpenSubsonic
+								</th>
+								<td>On the server</td>
+								<td>Through matched local files</td>
+								<td>Radio, public share links</td>
+							</tr>
+							<tr>
+								<th scope="row"><img src="/static/services/plex.svg" alt="" />Plex</th>
+								<td>On the server; favorites kept by Rufin</td>
+								<td>Over the server API</td>
+								<td>Recommendations, Plex Companion, Home profiles</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<p class="note">
+					Downloaded tracks, and tracks of a server matched to local folders, play from disk
+					while activity still goes to the server. You can also configure a local and public
+					address for a server.
+				</p>
+			</section>
+
+			<!-- ================= Features ================= -->
+			<section class="about-section">
+				<h2>Features</h2>
+				<div class="features">
+					<article class="card">
+						<h3>Playback</h3>
+						<ul>
+							<li><strong>Recommendations:</strong> configurable recommendation engine powered by ListenBrainz for queue and track radios</li>
+							<li><strong>Queue:</strong> Auto DJ keeps it filled with recommendations, skips unavailable tracks automatically, sleep timer</li>
+							<li><strong>Transitions:</strong> true gapless playback or equal-power crossfade, with an optional fade on play/pause</li>
+							<li><strong>Loudness:</strong> ReplayGain and EBU R128 normalization with true-peak analysis; results can be written to tags</li>
+							<li><strong>Sound:</strong> graphic (10, 18 or 31 bands) and parametric equalizer with saved presets per device and AutoEQ/APO import, crossfeed, playback speed and pitch</li>
+							<li><strong>Radio:</strong> select a configured radio station or add one yourself; artwork and lyrics are resolved best-effort, with synced lyrics for <a href="https://listen.moe/">LISTEN.moe</a></li>
+							<li><strong>Output:</strong> audio device selection, multichannel output and Dolby/DTS bitstream passthrough, casting to UPnP and Chromecast</li>
+							<li>
+								<strong>Formats:</strong> broad codec support and CUE sheets as separate playable tracks
+								<details>
+									<summary>Supported formats</summary>
+									<p>
+										AAC and ALAC (including M4A/MP4), AIFF and WAV, APE, FLAC, TTA and
+										WavPack, MP1/MP2/MP3 and Musepack, Ogg Vorbis/Opus/Speex, MKA and
+										audio-only WebM, WMA/ASF, DSD, tracker modules such as
+										MOD/XM/IT/S3M/MPTM, and emulated game music such as NSF/VGM.
+									</p>
+								</details>
+							</li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3>Rufin Connect</h3>
+						<ul>
+							<li>Syncs sources, credentials, playlists, favorites, pins, preferences and listening history between your devices; queues, downloads and local paths stay per device</li>
+							<li>Continue playback where another device left off, or control what another device is playing</li>
+							<li>Stream your local music library to another device</li>
+							<li>Devices pair with emoji verification (like Matrix) and connect over encrypted <a href="https://github.com/n0-computer/iroh">Iroh</a> links, directly or through a relay you choose; an encrypted sync folder (local, WebDAV or SMB) covers devices that are never online together</li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3>Integrations</h3>
+						<ul>
+							<li><strong>Scrobbling:</strong> Last.fm, Libre.fm, ListenBrainz, and self-hosted servers with offline storage and automatic retries; Discord Rich Presence</li>
+							<li><strong>System:</strong> media controls (MPRIS with lyrics on Linux), tray icon, running in the background; credentials are kept in the system keyring</li>
+							<li><strong>Private mode:</strong> temporarily pauses external activity</li>
+							<li>
+								<strong>Controller:</strong> control playback, browse the library, manage sources and playlists from a browser or the HTTP API, with token authentication; playback stays on the device running Rufin. It also runs without the desktop interface:
+								<pre><code>export RUFIN_API_TOKEN="your_token"
+rufin --headless --listen</code></pre>
+							</li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3>Library</h3>
+						<ul>
+							<li><strong>Browsing:</strong> a customizable Home, Folders, Genres, Moods, History and pins; details pages for tracks, albums and artists</li>
+							<li><strong>Search:</strong> search within a route or globally, optionally matching songs by their lyrics</li>
+							<li><strong>Playlists:</strong> mix tracks from different sources, organize playlists in folders, import and export M3U, PLS and XSPF</li>
+							<li><strong>Smart playlists:</strong> rules on metadata, mood/BPM and play/skip history, with custom sorting and limits</li>
+							<li><strong>Recommendations:</strong> track, album, artist, playlist and genre radios from the server or a local fallback</li>
+							<li><strong>Downloads:</strong> manual or through automatic rules, with optional transcoding; downloaded music stays playable offline</li>
+							<li><strong>Metadata:</strong> tag and artwork editor with batch editing, MusicBrainz and AcoustID lookup with on-device fingerprinting; missing artwork and lyrics are fetched automatically</li>
+							<li><strong>Lyrics:</strong> synced and word-by-word lyrics with karaoke mode, Furigana/Romaji, translations, online search, editable text and offset; saved as embedded tags or <code>.lrc</code> files</li>
+							<li><strong>Activity:</strong> favorites, ratings and listening history; a listening overview you can export as an image, and history as Last.fm/ListenBrainz compatible <code>.csv</code></li>
+							<li><strong>Sharing:</strong> share server links of your tracks, or share the song or selected lyrics as an elegant card for social media on Android</li>
+							<li><strong>Backups:</strong> granular import/export including credentials; scheduled and password-protected backups</li>
+							<li><strong>Files:</strong> open audio files and playlists as the default player, from the CLI with <code>rufin track.mp4</code>, or by dragging them into the window</li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3>Interface</h3>
+						<ul>
+							<li><strong>Desktop:</strong> adaptive layout with an extra mini player, fullscreen player with visualizer and lyrics, themes including custom ones, and an extensive keyboard shortcuts catalog</li>
+							<li><strong>Android:</strong> built with Jetpack Compose and reliable in layouts beyond the regular vertical screen: landscape mode, foldables, tablets and TVs</li>
+						</ul>
+					</article>
+				</div>
+			</section>
+
+			<!-- ================= Screenshots ================= -->
+			<section class="about-section">
+				<h2>Screenshots</h2>
+				<div id="screenshots">
+					{{ screenshots }}
+				</div>
+			</section>
+
+			<!-- ================= Credits ================= -->
+			<section class="about-section">
+				<h2>Credits</h2>
+				<div class="card">
+					<p>
+						Built with <a href="https://www.gtk.org/">GTK 4</a>,
+						<a href="https://gitlab.gnome.org/GNOME/libadwaita/">libadwaita</a>,
+						<a href="https://gtk-rs.org/">gtk-rs</a> and
+						<a href="https://gstreamer.freedesktop.org/">GStreamer</a>.
+					</p>
+					<p>
+						Rufin is greatly influenced by <a href="https://github.com/jeffvli/feishin">Feishin</a>,
+						and a lot of design decisions are directly borrowed, as much as can be achieved natively.
+					</p>
+					<p>
+						Player backend design and Smart Playlists are inspired by
+						<a href="https://github.com/strawberrymusicplayer/strawberry">Strawberry</a>
+						(a fork of <a href="https://github.com/clementine-player/Clementine">Clementine</a>).
+					</p>
+					<p>
+						The icon is designed by <a href="https://commenter.cc">Commenter25</a> and is licensed under CC-BY-SA-3.0.
+					</p>
+				</div>
+
+				<h3>Translators</h3>
+				<p class="note">
+					Thanks to everyone translating Rufin on
+					<a href="https://hosted.weblate.org/projects/rufin/app/">Weblate</a>.
+				</p>
+				<img
+					class="credits-image"
+					src="https://raw.githubusercontent.com/screwys/Rufin/credits/translators.svg"
+					alt="Translators of Rufin by language"
+					loading="lazy"
+				/>
+			</section>
+
+			<!-- ================= License ================= -->
+			<section class="about-section">
+				<h2>License</h2>
+				<p>
+					Rufin is free software licensed under the
+					<a href="https://github.com/screwys/Rufin/blob/main/LICENSE">GNU General Public License v3.0 or later</a>.
+					The source code is available on <a href="https://github.com/screwys/Rufin">GitHub</a>.
+				</p>
+			</section>
+		</main>
+	</body>
+</html>
