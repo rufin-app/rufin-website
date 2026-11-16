@@ -4,6 +4,11 @@
 	max-width: 1100px;
 	margin: 2rem auto 4rem;
 	padding: 0 1.5rem;
+
+	@media (max-width: 700px) {
+		margin-bottom: 2rem;
+		padding: 0 1rem;
+	}
 }
 
 // Logo next to the intro text; stacks on narrow screens
@@ -19,12 +24,13 @@
 	}
 
 	p {
-		font-size: 1.15rem;
+		font-size: clamp(1rem, 4vw, 1.15rem);
 		line-height: 1.6;
 	}
 
 	@media (max-width: 700px) {
 		flex-direction: column;
+		gap: 1rem;
 		text-align: center;
 
 		> img {
@@ -34,10 +40,10 @@
 }
 
 .about-section {
-	margin-top: 4rem;
+	margin-top: clamp(2.5rem, 10vw, 4rem);
 
 	> h2 {
-		font-size: 2rem;
+		font-size: clamp(1.5rem, 6.5vw, 2rem);
 		border-bottom: 1px solid $border;
 		padding-bottom: 0.5rem;
 	}
@@ -64,6 +70,11 @@
 		padding: 0.85rem 1rem;
 		text-align: left;
 		vertical-align: middle;
+
+		@media (max-width: 700px) {
+			padding: 0.65rem 0.75rem;
+			font-size: 0.9rem;
+		}
 	}
 
 	thead th {
@@ -103,6 +114,10 @@
 // of different heights don't leave gaps. Drops to one column on narrow screens.
 .features {
 	columns: 2 380px;
+
+	@media (max-width: 700px) {
+		columns: 1;
+	}
 	column-gap: 1.25rem;
 
 	.card {
@@ -155,7 +170,7 @@
 
 #screenshots {
 	display: grid;
-	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	grid-template-columns: repeat(auto-fill, minmax(min(320px, 100%), 1fr));
 	gap: 1.5rem;
 
 	figure {

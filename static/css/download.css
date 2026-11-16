@@ -13,9 +13,14 @@ a:hover {
   text-align: center;
   padding: 0 1.5rem;
 }
+@media (max-width: 700px) {
+  .page-header {
+    padding: 0 1rem;
+  }
+}
 .page-header h1 {
   margin: 0;
-  font-size: 3rem;
+  font-size: clamp(2.1rem, 9vw, 3rem);
   background: linear-gradient(135deg, #ffc94a, #ff8c1a, #ff3d00);
   -webkit-background-clip: text;
   background-clip: text;
@@ -25,12 +30,12 @@ a:hover {
 }
 .page-header p {
   color: #a8a8a8;
-  font-size: 1.15rem;
+  font-size: clamp(1rem, 4vw, 1.15rem);
 }
 
 .card-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
   gap: 1.25rem;
   margin-top: 1.25rem;
   align-items: start;
@@ -44,9 +49,14 @@ a:hover {
   background: rgba(18, 18, 18, 0.75);
   backdrop-filter: blur(8px);
 }
+@media (max-width: 700px) {
+  .card {
+    padding: 1.15rem;
+  }
+}
 .card h3 {
   margin: 0 0 0.5rem;
-  font-size: 1.4rem;
+  font-size: clamp(1.2rem, 5vw, 1.4rem);
 }
 .card p {
   line-height: 1.5;
@@ -160,6 +170,12 @@ code {
   cursor: pointer;
   transition: border-color 0.25s ease, background-color 0.25s ease, color 0.25s ease;
 }
+@media (max-width: 700px) {
+  #platform-tabs button {
+    padding: 0.5rem 1rem;
+    font-size: 0.95rem;
+  }
+}
 #platform-tabs button:hover {
   border-color: #ff8c1a;
 }
@@ -178,6 +194,12 @@ code {
   margin: 2rem auto 4rem;
   padding: 0 1.5rem;
 }
+@media (max-width: 700px) {
+  #platforms {
+    margin: 1.5rem auto 1rem;
+    padding: 0 1rem;
+  }
+}
 
 .platform {
   margin-bottom: 3rem;
@@ -186,9 +208,12 @@ code {
 .js .platform .platform-title {
   display: none;
 }
+.js .platform {
+  margin-bottom: 0;
+}
 
 .platform-title {
-  font-size: 2rem;
+  font-size: clamp(1.5rem, 6.5vw, 2rem);
   border-bottom: 1px solid rgba(255, 255, 255, 0.12);
   padding-bottom: 0.5rem;
 }
@@ -208,6 +233,11 @@ pre {
   border-radius: 10px;
   background: #0b0b0b;
   overflow-x: auto;
+}
+@media (max-width: 700px) {
+  pre {
+    font-size: 0.85rem;
+  }
 }
 pre code {
   padding: 0;

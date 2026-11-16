@@ -1,6 +1,11 @@
 <nav class="navbar">
     <a class="navbar-logo" href="/"><img src="/static/logo.svg" alt="Home"/></a>
-    <ul class="navbar-links">
+    <button class="navbar-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="navbar-links">
+        <span class="navbar-toggle-bar"></span>
+        <span class="navbar-toggle-bar"></span>
+        <span class="navbar-toggle-bar"></span>
+    </button>
+    <ul class="navbar-links" id="navbar-links">
         <li>
             <a href="/">
                 <svg class="navbar-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9v12h14V9"/><path d="M10 21v-6h4v6"/></svg>
@@ -33,3 +38,30 @@
         </li>
     </ul>
 </nav>
+<script>
+    // Mobile menu: the hamburger button opens the links as a context menu
+    (() => {
+        const nav = document.currentScript.previousElementSibling;
+        const toggle = nav.querySelector(".navbar-toggle");
+
+        const setOpen = (open) => {
+            nav.classList.toggle("navbar-open", open);
+            toggle.setAttribute("aria-expanded", String(open));
+            toggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+        };
+
+        toggle.addEventListener("click", () => setOpen(!nav.classList.contains("navbar-open")));
+        // Tapping anywhere outside the navbar closes the menu
+        document.addEventListener("click", (e) => {
+            if (nav.classList.contains("navbar-open") && !nav.contains(e.target)) setOpen(false);
+        });
+        document.addEventListener("keydown", (e) => {
+            if (e.key === "Escape" && nav.classList.contains("navbar-open")) {
+                setOpen(false);
+                toggle.focus();
+            }
+        });
+        // Close it if the screen gets wide enough to show the normal navbar
+        matchMedia("(min-width: 701px)").addEventListener("change", (e) => e.matches && setOpen(false));
+    })();
+</script>

@@ -12,6 +12,8 @@ $dot-fade-time: 2s; // how long the dots take to fade in on page load
 body {
     margin: 0;
     min-height: 100vh;
+    // On phones 100vh is taller than the screen while the address bar is shown
+    min-height: 100dvh;
     background-color: $background;
     color: #eeeeee;
     position: relative;
@@ -47,6 +49,28 @@ body {
         // Offset so the two dots don't move in sync
         // (the second value keeps the fade-in starting immediately)
         animation-delay: $dot-speed * -0.5, 0s;
+    }
+}
+
+// Smaller dots on phones so they don't cover the whole screen
+@media (max-width: 700px) {
+    $dot-size-mobile: 300px;
+
+    body::before,
+    body::after {
+        width: $dot-size-mobile;
+        height: $dot-size-mobile;
+        filter: blur(50px);
+    }
+
+    body::before {
+        top: $dot-size-mobile * -0.3;
+        left: $dot-size-mobile * -0.3;
+    }
+
+    body::after {
+        bottom: $dot-size-mobile * -0.3;
+        right: $dot-size-mobile * -0.3;
     }
 }
 

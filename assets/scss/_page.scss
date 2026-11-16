@@ -24,9 +24,13 @@ a {
 	text-align: center;
 	padding: 0 1.5rem;
 
+	@media (max-width: 700px) {
+		padding: 0 1rem;
+	}
+
 	h1 {
 		margin: 0;
-		font-size: 3rem;
+		font-size: clamp(2.1rem, 9vw, 3rem);
 		background: linear-gradient(135deg, $yellow, $orange, $red-orange);
 		-webkit-background-clip: text;
 		background-clip: text;
@@ -37,13 +41,13 @@ a {
 
 	p {
 		color: $muted;
-		font-size: 1.15rem;
+		font-size: clamp(1rem, 4vw, 1.15rem);
 	}
 }
 
 .card-grid {
 	display: grid;
-	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
 	gap: 1.25rem;
 	margin-top: 1.25rem;
 	align-items: start;
@@ -57,9 +61,13 @@ a {
 	background: $card-bg;
 	backdrop-filter: blur(8px);
 
+	@media (max-width: 700px) {
+		padding: 1.15rem;
+	}
+
 	h3 {
 		margin: 0 0 0.5rem;
-		font-size: 1.4rem;
+		font-size: clamp(1.2rem, 5vw, 1.4rem);
 	}
 
 	p {

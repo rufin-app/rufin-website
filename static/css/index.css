@@ -1,9 +1,18 @@
 #title {
   text-align: center;
+  padding: 0 1rem;
+}
+#title h1 {
+  font-size: clamp(2.2rem, 10vw, 3rem);
+}
+#title h3 {
+  font-size: clamp(1rem, 4.2vw, 1.25rem);
+  font-weight: 500;
 }
 #title img {
-  width: 230px;
-  height: 230px;
+  width: clamp(140px, 45vw, 230px);
+  height: auto;
+  aspect-ratio: 1;
   filter: drop-shadow(0 0 30px rgba(255, 140, 26, 0.35));
 }
 
@@ -13,13 +22,14 @@
   flex-wrap: wrap;
   gap: 1.25rem;
   margin-top: 2rem;
+  padding: 0 1rem;
 }
 #links .button {
   position: relative;
   display: inline-block;
   padding: 0.85rem 2.25rem;
   border-radius: 999px;
-  font-size: 1.1rem;
+  font-size: clamp(1rem, 4vw, 1.1rem);
   font-weight: 600;
   letter-spacing: 0.03em;
   text-decoration: none;
@@ -64,12 +74,18 @@
   justify-content: center;
   gap: 3rem;
   margin-top: 4vh;
-  padding: 0 2rem;
+  padding: 0 2rem 3rem;
 }
 @media (max-width: 800px) {
   #showcase {
     flex-direction: column;
+    gap: 2rem;
     text-align: center;
+  }
+}
+@media (max-width: 700px) {
+  #showcase {
+    padding: 0 1rem 2rem;
   }
 }
 #showcase #showcase-image {
@@ -94,7 +110,7 @@
 }
 #showcase #showcase-text h3 {
   margin: 0;
-  font-size: 1.5rem;
+  font-size: clamp(1.15rem, 5vw, 1.5rem);
   font-weight: 500;
 }
 #showcase #showcase-text #showcase-list {
@@ -106,7 +122,7 @@
 #showcase #showcase-text #showcase-list h4 {
   width: fit-content;
   margin: 0.25rem 0 0;
-  font-size: 2.5rem;
+  font-size: clamp(1.6rem, 8vw, 2.5rem);
   font-weight: 700;
 }
 @media (max-width: 800px) {
@@ -127,7 +143,7 @@
   }
 }
 #showcase #showcase-services img {
-  height: 40px;
+  height: clamp(30px, 9vw, 40px);
   width: auto;
   transition: transform 0.25s ease;
 }

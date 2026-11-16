@@ -69,11 +69,104 @@
   transition: transform 0.25s ease;
 }
 
+.navbar-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 40px;
+  height: 40px;
+  padding: 9px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  color: #eeeeee;
+  cursor: pointer;
+  position: relative;
+  z-index: 1001;
+}
+.navbar-toggle:hover {
+  color: #ff8c1a;
+}
+.navbar-toggle:focus-visible {
+  color: #ff8c1a;
+  outline: 2px solid #ff8c1a;
+  outline-offset: 2px;
+}
+
+.navbar-toggle-bar {
+  display: block;
+  width: 100%;
+  height: 2px;
+  border-radius: 2px;
+  background-color: currentColor;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+}
+
+.navbar-open .navbar-toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+.navbar-open .navbar-toggle-bar:nth-child(2) {
+  opacity: 0;
+}
+.navbar-open .navbar-toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+@media (max-width: 700px) {
+  .navbar {
+    position: relative;
+    padding: 0.5rem 1rem;
+  }
+  .navbar-toggle {
+    display: flex;
+  }
+  .navbar-links {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0.75rem;
+    z-index: 1000;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.25rem;
+    min-width: 12rem;
+    padding: 0.5rem;
+    background-color: rgba(12, 12, 12, 0.96);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+    opacity: 0;
+    visibility: hidden;
+    transform-origin: top right;
+    transform: translateX(0.75rem) scale(0.95);
+    transition: transform 0.25s ease, opacity 0.25s ease, visibility 0s linear 0.25s;
+  }
+  .navbar-links a {
+    display: flex;
+    gap: 0.75rem;
+    padding: 0.7rem 0.8rem;
+    border-radius: 8px;
+  }
+  .navbar-links a::after {
+    display: none;
+  }
+  .navbar-links a:hover, .navbar-links a:focus-visible {
+    background-color: rgba(255, 140, 26, 0.12);
+  }
+  .navbar-open .navbar-links {
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    transition: transform 0.25s ease, opacity 0.25s ease, visibility 0s;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
-  .navbar-links a,
+  .navbar-links,
+.navbar-links a,
 .navbar-links a::after,
-.navbar-icon {
-    transition: none;
+.navbar-icon,
+.navbar-toggle-bar {
+    transition: none !important;
   }
   .navbar-links a:hover .navbar-icon,
 .navbar-links a:focus-visible .navbar-icon {

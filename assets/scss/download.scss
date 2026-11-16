@@ -15,6 +15,11 @@
 
 	button {
 		padding: 0.6rem 1.5rem;
+
+		@media (max-width: 700px) {
+			padding: 0.5rem 1rem;
+			font-size: 0.95rem;
+		}
 		border: 2px solid $border;
 		border-radius: 999px;
 		background: transparent;
@@ -48,6 +53,11 @@
 	max-width: 1000px;
 	margin: 2rem auto 4rem;
 	padding: 0 1.5rem;
+
+	@media (max-width: 700px) {
+		margin: 1.5rem auto 1rem;
+		padding: 0 1rem;
+	}
 }
 
 .platform {
@@ -58,10 +68,16 @@
 	.js & .platform-title {
 		display: none;
 	}
+
+	// Only one panel shows at a time with tabs, so its bottom margin would just
+	// leave empty space under the page
+	.js & {
+		margin-bottom: 0;
+	}
 }
 
 .platform-title {
-	font-size: 2rem;
+	font-size: clamp(1.5rem, 6.5vw, 2rem);
 	border-bottom: 1px solid $border;
 	padding-bottom: 0.5rem;
 }
@@ -82,6 +98,10 @@ pre {
 	border-radius: 10px;
 	background: #0b0b0b;
 	overflow-x: auto;
+
+	@media (max-width: 700px) {
+		font-size: 0.85rem;
+	}
 
 	code {
 		padding: 0;

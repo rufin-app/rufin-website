@@ -4,6 +4,11 @@
 	max-width: 1000px;
 	margin: 2rem auto 4rem;
 	padding: 0 1.5rem;
+
+	@media (max-width: 700px) {
+		margin-bottom: 2rem;
+		padding: 0 1rem;
+	}
 }
 
 // The two donation platforms: bigger cards with the button at the bottom
@@ -14,7 +19,7 @@
 
 	h2 {
 		margin: 0 0 0.5rem;
-		font-size: 1.6rem;
+		font-size: clamp(1.3rem, 5.5vw, 1.6rem);
 	}
 
 	.card-title img {
@@ -28,15 +33,20 @@
 
 	.button {
 		align-self: flex-start;
+
+		@media (max-width: 700px) {
+			align-self: stretch;
+			text-align: center;
+		}
 	}
 }
 
 #sponsors,
 #other-ways {
-	margin-top: 4rem;
+	margin-top: clamp(2.5rem, 10vw, 4rem);
 
 	h2 {
-		font-size: 2rem;
+		font-size: clamp(1.5rem, 6.5vw, 2rem);
 		border-bottom: 1px solid $border;
 		padding-bottom: 0.5rem;
 	}
@@ -54,6 +64,11 @@
 
 	.button {
 		align-self: flex-start;
+
+		@media (max-width: 700px) {
+			align-self: stretch;
+			text-align: center;
+		}
 	}
 }
 
