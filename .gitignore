@@ -1,2 +1,6 @@
 /target
 /dist
+
+# Generated from assets/scss at build time; keep the folder only
+/static/css/*
+!/static/css/.gitkeep
