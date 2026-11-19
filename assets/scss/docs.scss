@@ -1,0 +1,132 @@
+@use "page" as *;
+
+#docs {
+	display: grid;
+	grid-template-columns: 260px minmax(0, 1fr);
+	gap: 1.5rem;
+	align-items: start;
+	max-width: 1200px;
+	margin: 2rem auto 4rem;
+	padding: 0 1.5rem;
+
+	// Phones: the page list goes above the content
+	@media (max-width: 700px) {
+		grid-template-columns: minmax(0, 1fr);
+		margin-bottom: 2rem;
+		padding: 0 1rem;
+	}
+}
+
+// Tree of every docs page; subfolders are indented under their folder
+.docs-sidebar {
+	position: sticky;
+	top: 1rem;
+	max-height: calc(100vh - 2rem);
+	overflow-y: auto;
+
+	@media (max-width: 700px) {
+		position: static;
+		max-height: none;
+	}
+
+	ul {
+		list-style: none;
+		margin: 0;
+		padding: 0;
+	}
+
+	ul ul {
+		margin-left: 0.6rem;
+		padding-left: 0.75rem;
+		border-left: 1px solid $border;
+	}
+
+	a {
+		display: block;
+		padding: 0.3rem 0.5rem;
+		border-radius: 6px;
+		color: $muted;
+		text-decoration: none;
+
+		&:hover {
+			color: $text;
+			background: rgba(255, 255, 255, 0.05);
+		}
+
+		&[aria-current="page"] {
+			color: $orange;
+			background: rgba($orange, 0.12);
+		}
+	}
+}
+
+// The rendered markdown
+.docs-content {
+	line-height: 1.65;
+	overflow-wrap: break-word;
+
+	> :first-child {
+		margin-top: 0;
+	}
+
+	h1 {
+		font-size: clamp(1.9rem, 8vw, 2.5rem);
+		background: linear-gradient(135deg, $yellow, $orange, $red-orange);
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+		width: fit-content;
+	}
+
+	h2 {
+		margin-top: 2rem;
+		border-bottom: 1px solid $border;
+		padding-bottom: 0.4rem;
+	}
+
+	img {
+		max-width: 100%;
+		border-radius: 8px;
+	}
+
+	pre {
+		overflow-x: auto;
+		padding: 1rem;
+		border: 1px solid $border;
+		border-radius: 8px;
+		background: rgba(0, 0, 0, 0.5);
+
+		code {
+			padding: 0;
+			background: none;
+		}
+	}
+
+	blockquote {
+		margin: 1rem 0;
+		padding: 0.25rem 1rem;
+		border-left: 3px solid $orange;
+		color: $muted;
+	}
+
+	table {
+		display: block;
+		overflow-x: auto;
+		border-collapse: collapse;
+	}
+
+	th,
+	td {
+		padding: 0.5rem 0.75rem;
+		border: 1px solid $border;
+	}
+
+	th {
+		background: rgba(255, 255, 255, 0.05);
+	}
+
+	hr {
+		border: none;
+		border-top: 1px solid $border;
+	}
+}

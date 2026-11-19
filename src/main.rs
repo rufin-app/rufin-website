@@ -1,14 +1,22 @@
+mod docs;
 mod scss;
 
 use std::{fs, io, path::Path};
 
-use axum::{Router, response::Html, routing::get};
+use axum::{
+    Router,
+    extract::Request,
+    http::StatusCode,
+    response::{Html, IntoResponse, Response},
+    routing::get,
+};
+use tower::ServiceExt;
 use tower_http::services::{ServeDir, ServeFile};
 
 const NAVBAR: &str = include_str!("../templates/navbar.html");
 
 /// Fills in the parts every page shares.
-fn page(template: &str) -> String {
+pub(crate) fn page(template: &str) -> String {
     template.replace("{{ navbar }}", NAVBAR)
 }
 
@@ -83,6 +91,15 @@ fn build(out_dir: &Path) -> io::Result<()> {
         fs::write(&file, render())?;
         println!("Rendered {route} -> {}", file.display());
     }
+
+    for (route, html) in docs::render_all()? {
+        let dir = out_dir.join(route.trim_start_matches('/'));
+        fs::create_dir_all(&dir)?;
+        let file = dir.join("index.html");
+        fs::write(&file, html)?;
+        println!("Rendered {route} -> {}", file.display());
+    }
+    docs::copy_assets(&out_dir.join(docs::DIR))?;
     Ok(())
 }
 
@@ -100,6 +117,22 @@ fn copy_dir(from: &Path, to: &Path) -> io::Result<()> {
     Ok(())
 }
 
+/// `/docs/...`: a rendered markdown page, or a file (image, ...) from `docs/`
+async fn docs_page(req: Request) -> Response {
+    let route = req.uri().path().to_owned();
+    match docs::render(&route) {
+        Ok(Some(html)) => Html(html).into_response(),
+        Ok(None) => match docs::asset(&route) {
+            Some(path) => ServeFile::new(path).oneshot(req).await.into_response(),
+            None => StatusCode::NOT_FOUND.into_response(),
+        },
+        Err(e) => {
+            eprintln!("failed to render {route}: {e}");
+            StatusCode::INTERNAL_SERVER_ERROR.into_response()
+        }
+    }
+}
+
 async fn serve() {
     // Override with e.g. `HOST=127.0.0.1 PORT=3000 cargo run`
     let host = std::env::var("HOST").unwrap_or_else(|_| "0.0.0.0".into());
@@ -111,6 +144,9 @@ async fn serve() {
         app = app.route(route, get(move || async move { Html(render()) }));
     }
     let app = app
+        .route("/docs", get(docs_page))
+        .route("/docs/", get(docs_page))
+        .route("/docs/{*path}", get(docs_page))
         .route_service("/favicon.ico", ServeFile::new("site/favicon.ico"))
         .nest_service("/static", ServeDir::new("static"));
 

@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>{{ title }} - Rufin Docs</title>
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="stylesheet" href="/static/css/style.css" />
+		<link rel="stylesheet" href="/static/css/docs.css" />
+	</head>
+	<body>
+		{{ navbar }}
+		<div id="docs">
+			<nav class="docs-sidebar card" aria-label="Documentation">
+				<ul>{{ sidebar }}</ul>
+			</nav>
+			<article class="docs-content card">
+				{{ content }}
+			</article>
+		</div>
+	</body>
+</html>
