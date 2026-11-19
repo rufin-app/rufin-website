@@ -26,13 +26,21 @@ $text: #eeeeee;
 	}
 }
 
+// Main buttons on one row, smaller extra buttons (Matrix) stacked below
 #links {
 	display: flex;
-	justify-content: center;
-	flex-wrap: wrap;
-	gap: 1.25rem;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
 	margin-top: 2rem;
 	padding: 0 1rem;
+
+	.links-row {
+		display: flex;
+		justify-content: center;
+		flex-wrap: wrap;
+		gap: 1.25rem;
+	}
 
 	.button {
 		position: relative;
@@ -100,6 +108,39 @@ $text: #eeeeee;
 			color: $yellow;
 			background-color: rgba($orange, 0.12);
 			box-shadow: 0 8px 30px rgba($orange, 0.25);
+		}
+	}
+
+	// Smaller variant; written after .button-secondary so its padding wins
+	.button-small {
+		font-size: clamp(0.85rem, 3.5vw, 0.9rem);
+		padding: calc(0.45rem - 2px) calc(1.4rem - 2px);
+	}
+
+	// Solid white with black text + logo; written last so it overrides .button-secondary
+	.button-matrix {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		color: #000000;
+		border-color: #ffffff;
+		background-color: #ffffff;
+
+		svg {
+			width: 1.15em;
+			height: 1.15em;
+		}
+
+		&:hover,
+		&:focus-visible {
+			color: #000000;
+			background-color: #e6e6e6;
+			border-color: #e6e6e6;
+			box-shadow: 0 8px 30px rgba(#ffffff, 0.25);
+		}
+
+		&:focus-visible {
+			outline-color: #ffffff;
 		}
 	}
 }
