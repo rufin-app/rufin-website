@@ -9,6 +9,15 @@ $dot-opacity: 0.35; // 0 = invisible, 1 = solid
 $dot-speed: 20s; // time for one full rotation; higher = slower
 $dot-fade-time: 2s; // how long the dots take to fade in on page load
 
+@font-face {
+  font-family: FreeMono;
+  src: url(/static/FreeMono.ttf);
+}
+
+* {
+    font-family: FreeMono;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
