@@ -10,12 +10,36 @@ $dot-speed: 20s; // time for one full rotation; higher = slower
 $dot-fade-time: 2s; // how long the dots take to fade in on page load
 
 @font-face {
-  font-family: FreeMono;
-  src: url(/static/FreeMono.ttf);
+    font-family: "Adwaita Sans";
+    src: url(/static/fonts/AdwaitaSans-Regular.woff2) format("woff2");
+    font-weight: 400 700;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Adwaita Sans";
+    src: url(/static/fonts/AdwaitaSans-Italic.woff2) format("woff2");
+    font-weight: 400 700;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Adwaita Mono";
+    src: url(/static/fonts/AdwaitaMono-Regular.woff2) format("woff2");
+    font-display: swap;
 }
 
 * {
-    font-family: FreeMono;
+    font-family: "Adwaita Sans", sans-serif;
+}
+
+pre,
+code,
+kbd,
+samp {
+    font-family: "Adwaita Mono", monospace;
 }
 
 body {

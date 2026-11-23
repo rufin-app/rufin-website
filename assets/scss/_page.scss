@@ -8,10 +8,6 @@ $muted: #a8a8a8;
 $card-bg: rgba(18, 18, 18, 0.75);
 $border: rgba(255, 255, 255, 0.12);
 
-body {
-	font-family: system-ui, sans-serif;
-}
-
 a {
 	color: $orange;
 
@@ -111,7 +107,6 @@ a {
 
 // Inline code
 code {
-	font-family: ui-monospace, "JetBrains Mono", monospace;
 	font-size: 0.9em;
 	padding: 0.1em 0.35em;
 	border-radius: 4px;
