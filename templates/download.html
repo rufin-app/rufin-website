@@ -36,8 +36,8 @@
 					<article class="card">
 						<h3 class="card-title"><img src="/static/distros/flatpak.svg" alt="" />Flatpak</h3>
 						<p>Works on any distribution and keeps Rufin up to date through Flathub.</p>
-						<a class="button button-primary" href="https://flathub.org/apps/io.github.screwys.Rufin">Get it on Flathub</a>
-						<pre><code>flatpak install flathub io.github.screwys.Rufin</code></pre>
+						<a class="button button-primary" href="https://flathub.org/apps/app.rufin.rufin">Get it on Flathub</a>
+						<pre><code>flatpak install flathub app.rufin.rufin</code></pre>
 					</article>
 
 					<article class="card">
@@ -62,8 +62,8 @@ sudo dnf install rufin</code></pre>
 						<p>Or add it to your profile:</p>
 						<pre><code>nix profile install nixpkgs#rufin</code></pre>
 						<p>You can also run <code>main</code> or a specific release:</p>
-						<pre><code>nix run github:screwys/Rufin/main
-nix run github:screwys/Rufin/vX.Y.Z</code></pre>
+						<pre><code>nix run github:rufin-app/rufin/master
+nix run github:rufin-app/rufin/vX.Y.Z</code></pre>
 					</article>
 
 					<article class="card">
@@ -95,7 +95,7 @@ sudo emaint sync -r karioverlay</code></pre>
 				<article class="card card-featured">
 					<h3>Installer</h3>
 					<p>Download the <code>.exe</code> installer from the latest GitHub release.</p>
-					<a class="button button-primary" href="https://github.com/screwys/Rufin/releases/latest">Download for Windows</a>
+					<a class="button button-primary" href="https://github.com/rufin-app/rufin/releases/latest">Download for Windows</a>
 					<p class="note">
 						Turn on <strong>Automatic updates</strong> in General preferences to have Rufin
 						install available updates when it starts, or click <strong>Update</strong> in
@@ -123,7 +123,7 @@ sudo emaint sync -r karioverlay</code></pre>
 							Download the <code>.dmg</code> directly. Note that you will have to
 							update Rufin manually.
 						</p>
-						<a class="button button-secondary" href="https://github.com/screwys/Rufin/releases/latest">Download .dmg</a>
+						<a class="button button-secondary" href="https://github.com/rufin-app/rufin/releases/latest">Download .dmg</a>
 					</article>
 				</div>
 			</section>
@@ -138,8 +138,8 @@ sudo emaint sync -r karioverlay</code></pre>
 						<a href="https://obtainium.imranr.dev/">Obtainium</a>.
 						Open the button below on your phone, or add the repository URL in Obtainium yourself.
 					</p>
-					<a class="button button-primary" href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22io.github.screwys.Rufin%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Fscrewys%2FRufin%22%2C%22author%22%3A%22screwys%22%2C%22name%22%3A%22Rufin%22%7D">Get it on Obtainium</a>
-					<pre><code>https://github.com/screwys/Rufin</code></pre>
+					<a class="button button-primary" href="https://apps.obtainium.imranr.dev/redirect?r=obtainium://app/%7B%22id%22%3A%22app.rufin.rufin%22%2C%22url%22%3A%22https%3A%2F%2Fgithub.com%2Frufin-app%2Frufin%22%2C%22author%22%3A%22screwys%22%2C%22name%22%3A%22Rufin%22%7D">Get it on Obtainium</a>
+					<pre><code>https://github.com/rufin-app/rufin</code></pre>
 					<p class="note">Requires Android 7.0 or newer.</p>
 				</article>
 			</section>
@@ -152,7 +152,7 @@ sudo emaint sync -r karioverlay</code></pre>
 						Building natively requires Rust 1.96+, CMake 3.25+, Ninja, pkg-config,
 						GTK 4.20+, libadwaita 1.9+ and GStreamer 1.26+.
 					</p>
-					<pre><code>git clone https://github.com/screwys/Rufin.git
+					<pre><code>git clone https://github.com/rufin-app/rufin.git
 cd Rufin
 just build
 just debug</code></pre>
@@ -162,7 +162,7 @@ just debug</code></pre>
 					</p>
 					<pre><code>just container setup
 just build</code></pre>
-					<a class="button button-secondary" href="https://github.com/screwys/Rufin#building-locally">Full build instructions</a>
+					<a class="button button-secondary" href="https://github.com/rufin-app/rufin#building-locally">Full build instructions</a>
 				</article>
 			</section>
 		</main>

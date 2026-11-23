@@ -55,7 +55,7 @@ fn about() -> String {
         .iter()
         .map(|(file, caption)| {
             let url = format!(
-                "https://raw.githubusercontent.com/screwys/Rufin/main/resources/screenshots/{file}.png"
+                "https://raw.githubusercontent.com/rufin-app/rufin/master/resources/screenshots/{file}.png"
             );
             format!(
                 r#"<figure><a href="{url}"><img src="{url}" alt="{caption}" loading="lazy" /></a><figcaption>{caption}</figcaption></figure>"#
