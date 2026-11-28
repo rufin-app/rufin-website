@@ -26,8 +26,9 @@
 						&amp; editing, and a careful playback engine powered by GStreamer.
 					</p>
 					<p>
-						Rufin Connect securely syncs your devices and moves playback between them;
-						Rufin can also run headless, be scripted, or be controlled from its Web UI.
+						Rufin Connect securely syncs your devices and moves playback between them,
+						and Rooms let you listen together with friends; Rufin can also run headless,
+						be scripted, or be controlled from its Web UI.
 					</p>
 					<a class="button button-primary" href="/download">Download Rufin</a>
 				</div>
@@ -137,7 +138,18 @@
 							<li>Syncs sources, credentials, playlists, favorites, pins, preferences and listening history between your devices; queues, downloads and local paths stay per device</li>
 							<li>Continue playback where another device left off, or control what another device is playing</li>
 							<li>Stream your local music library to another device</li>
-							<li>Devices pair with emoji verification (like Matrix) and connect over encrypted <a href="https://github.com/n0-computer/iroh">Iroh</a> links, directly or through a relay you choose; an encrypted sync folder (local, WebDAV or SMB) covers devices that are never online together</li>
+							<li>Devices pair with emoji verification (like Matrix); connections between them are end-to-end encrypted (<a href="https://www.iroh.computer/">Iroh</a>) and go directly where possible, and a relay you choose helps devices find each other; an encrypted sync folder (local, WebDAV or SMB) covers devices that are never online together</li>
+						</ul>
+					</article>
+
+					<article class="card">
+						<h3>Rooms</h3>
+						<ul>
+							<li>Listen together: create a room and share its invite link; everyone hears the same queue in step, each on their own device</li>
+							<li>Everyone can play, pause, seek, skip, add and reorder songs; the host ends the room, and leaving gives you your own queue back</li>
+							<li>Each listener plays their own copy of a song, from whichever source they have it in; with "Share songs" on, members who have a song play it for listeners who don't</li>
+							<li>No account: every room has a new identity, its invite stops working when the room ends, and a listener whose connection drops is brought back automatically</li>
+							<li>Connections between devices are end-to-end encrypted (<a href="https://www.iroh.computer/">Iroh</a>) and go directly where possible; a relay the host chooses helps devices find each other, and music never passes through a public relay</li>
 						</ul>
 					</article>
 
