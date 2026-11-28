@@ -32,6 +32,12 @@ fn donate() -> String {
     page(include_str!("../templates/donate.html"))
 }
 
+/// Where a room's invite link lands: the invite stands after the `#` and the page hands it to
+/// the app.
+fn room() -> String {
+    page(include_str!("../templates/room.html"))
+}
+
 /// Screenshots from the Rufin repository: (file name without `.png`, caption)
 const SCREENSHOTS: &[(&str, &str)] = &[
     ("Rufin", "Home"),
@@ -72,6 +78,7 @@ const PAGES: &[(&str, fn() -> String)] = &[
     ("/about", about),
     ("/download", download),
     ("/donate", donate),
+    ("/room", room),
 ];
 
 /// Writes the whole site as plain files into `out_dir`, ready for GitHub Pages:

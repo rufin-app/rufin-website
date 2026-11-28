@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="robots" content="noindex" />
+		<meta name="referrer" content="no-referrer" />
+		<title>Join a room – Rufin</title>
+		<link rel="icon" href="/favicon.ico" sizes="any" />
+		<link rel="stylesheet" href="/static/css/style.css" />
+		<link rel="stylesheet" href="/static/css/room.css" />
+	</head>
+	<body>
+		{{ navbar }}
+		<main id="room">
+			<!-- The invite is the part of the address after the #. A browser never sends that part
+			     to a site, so this page hands it to the app and tells nobody of the room. -->
+			<article id="room-card" class="card card-featured">
+				<div id="room-mark" aria-hidden="true"><img src="/static/logo.svg" alt="" /></div>
+				<p id="room-eyebrow" hidden>You're invited to listen together</p>
+				<h1 id="room-title">No invite in this link</h1>
+				<div id="room-invite" hidden>
+					<a id="room-open" class="button button-primary" href="/download">Open in Rufin</a>
+					<p class="note">Rufin should open by itself. If it doesn't, press the button.</p>
+				</div>
+				<p id="room-none" class="note">Ask the room's host for a new one.</p>
+				<div id="room-more">
+					<a href="/download">Get Rufin</a>
+					<button id="room-copy" type="button" title="Paste it in Rufin under Rooms, Join a room" hidden>
+						Copy link
+					</button>
+				</div>
+			</article>
+		</main>
+		<script>
+			// The invite as the app takes it. Only what an invite is made of gets through.
+			const invite = location.hash.slice(1);
+			if (/^[A-Za-z0-9_-]{16,4096}$/.test(invite)) {
+				const app = "rufin://room/" + invite;
+				const shown = (id) => (document.getElementById(id).hidden = false);
+				document.getElementById("room-open").href = app;
+				document.getElementById("room-none").hidden = true;
+				["room-eyebrow", "room-invite", "room-copy"].forEach(shown);
+				let room = "";
+				try {
+					const bytes = Uint8Array.from(atob(invite.replace(/-/g, "+").replace(/_/g, "/")), (c) => c.charCodeAt(0));
+					const named = JSON.parse(new TextDecoder().decode(bytes)).room;
+					if (typeof named === "string") room = named.trim().slice(0, 60);
+				} catch {
+					// The app says what is wrong with an invite it cannot read.
+				}
+				document.getElementById("room-title").textContent = room || "Join a room";
+				if (room) {
+					// The room's mark, as the app draws a listener's: its first letter.
+					const mark = document.getElementById("room-mark");
+					mark.textContent = Array.from(room)[0].toUpperCase();
+					mark.classList.add("named");
+					document.title = "Join " + room + " – Rufin";
+				}
+				const copy = document.getElementById("room-copy");
+				copy.addEventListener("click", async () => {
+					await navigator.clipboard.writeText(location.href);
+					copy.textContent = "Copied";
+				});
+				// The app opens by itself where the browser lets a page do that; the button is for
+				// where it does not. A desktop Chromium stays on this page when no app takes the
+				// link; other browsers would put an error in its place, so there the try goes into
+				// a frame nobody sees.
+				if (navigator.userAgentData && !navigator.userAgentData.mobile) {
+					location.href = app;
+				} else {
+					const frame = document.createElement("iframe");
+					frame.hidden = true;
+					frame.src = app;
+					document.body.append(frame);
+				}
+			}
+		</script>
+	</body>
+</html>

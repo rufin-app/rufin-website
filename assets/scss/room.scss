@@ -1,0 +1,157 @@
+@use "page" as *;
+
+// One card in the middle of the page: the room, then the one thing to do.
+#room {
+	display: grid;
+	place-items: center;
+	min-height: 70dvh;
+	padding: 1.5rem 1rem 3rem;
+	box-sizing: border-box;
+
+	[hidden] {
+		display: none;
+	}
+}
+
+#room-card {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: min(100%, 440px);
+	box-sizing: border-box;
+	padding: 2.5rem 2rem 1.25rem;
+	text-align: center;
+	animation: room-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+
+	@media (max-width: 700px) {
+		padding: 2rem 1.25rem 1rem;
+	}
+
+	.note {
+		margin: 0.9rem 0 0;
+		line-height: 1.45;
+	}
+}
+
+// The logo, or the room's first letter on the site's gradient with a ring that breathes.
+#room-mark {
+	position: relative;
+	display: grid;
+	place-items: center;
+	width: 96px;
+	height: 96px;
+	margin-bottom: 1.5rem;
+	border-radius: 50%;
+
+	img {
+		width: 100%;
+		height: 100%;
+		filter: drop-shadow(0 0 24px rgba($orange, 0.35));
+	}
+
+	&.named {
+		color: #000000;
+		font-size: 2.75rem;
+		font-weight: 700;
+		line-height: 1;
+		background: linear-gradient(135deg, $yellow, $orange, $red-orange);
+		box-shadow: 0 0 40px rgba($orange, 0.4);
+
+		&::after {
+			content: "";
+			position: absolute;
+			inset: -2px;
+			border: 2px solid rgba($orange, 0.6);
+			border-radius: 50%;
+			animation: room-ring 2.6s ease-out infinite;
+		}
+	}
+}
+
+#room-eyebrow {
+	margin: 0;
+	color: $muted;
+	font-size: 0.95rem;
+}
+
+#room-title {
+	width: fit-content;
+	max-width: 100%;
+	margin: 0.35rem 0 1.75rem;
+	font-size: clamp(1.8rem, 8vw, 2.4rem);
+	line-height: 1.15;
+	overflow-wrap: anywhere;
+	background: linear-gradient(135deg, $yellow, $orange, $red-orange);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+}
+
+#room-invite {
+	width: 100%;
+}
+
+// Without an invite the line under the title belongs to it.
+#room-card #room-none {
+	margin-top: -1rem;
+}
+
+#room-card #room-open {
+	display: block;
+	margin: 0;
+	padding: 0.95rem 1.75rem;
+	font-size: 1.1rem;
+}
+
+// What else there is, kept quiet under the card's one button.
+#room-more {
+	display: flex;
+	justify-content: center;
+	gap: 1.75rem;
+	width: 100%;
+	margin-top: 1.5rem;
+	padding-top: 1.1rem;
+	border-top: 1px solid $border;
+	font-size: 0.95rem;
+
+	a,
+	button {
+		padding: 0;
+		border: 0;
+		background: none;
+		color: $muted;
+		font: inherit;
+		text-decoration: none;
+		cursor: pointer;
+
+		&:hover,
+		&:focus-visible {
+			color: $yellow;
+		}
+	}
+}
+
+@keyframes room-in {
+	from {
+		opacity: 0;
+		transform: translateY(24px);
+	}
+}
+
+@keyframes room-ring {
+	from {
+		opacity: 1;
+		transform: scale(1);
+	}
+	to {
+		opacity: 0;
+		transform: scale(1.45);
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	#room-card,
+	#room-mark.named::after {
+		animation: none;
+	}
+}
