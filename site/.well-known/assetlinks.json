@@ -1,0 +1,14 @@
+[
+	{
+		"relation": [
+			"delegate_permission/common.handle_all_urls"
+		],
+		"target": {
+			"namespace": "android_app",
+			"package_name": "app.rufin.rufin",
+			"sha256_cert_fingerprints": [
+				"A3:01:19:8E:C2:B6:4F:41:28:14:E7:69:3C:2F:53:5C:4C:A8:38:0D:6F:64:F2:89:7F:E4:02:B9:32:6A:50:09"
+			]
+		}
+	}
+]
